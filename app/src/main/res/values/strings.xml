@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Archtest</string>
+
+    <string name="btn_cats">Cats</string>
+    <string name="btn_cats_paginated">Cats (Paginated)</string>
+    <string name="btn_chuck_norris">Chuck Norris</string>
+    <string name="btn_next_joke">Next joke</string>
+    <string name="btn_test_ground">Test Ground</string>
+    <string name="btn_plus">Plus</string>
+    <string name="btn_minus">Minus</string>
+    <string name="btn_star_wars">Star Wars</string>
+
+    <string name="hint_search">Search…</string>
+
+    <string name="sw_films">Films</string>
+    <string name="sw_people">People</string>
+    <string name="sw_planets">Planets</string>
+    <string name="sw_species">Species</string>
+    <string name="sw_star_ships">Star ships</string>
+    <string name="sw_vehicles">Vehicles</string>
+
+
+
+</resources>

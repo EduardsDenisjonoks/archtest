@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6300EE</color>
+    <color name="colorSecondary">#03DAC5</color>
+    <color name="colorPrimaryDark">#4B00D1</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="text_white">#FFFFFF</color>
+    <color name="text_black">#181515</color>
+    <color name="text_grey">#75181515</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="ripple">@color/white</color>
+
+    <!-- SW -->
+    <color name="sw_bg">#F8F5FC</color>
+    <color name="sw_item_bg">@color/colorPrimary</color>
+</resources>

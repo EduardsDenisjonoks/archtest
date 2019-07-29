@@ -1,0 +1,48 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme"  parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorSecondary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="DefaultScroll">
+        <item name="android:clipToPadding">false</item>
+        <item name="android:paddingTop">@dimen/medium_16</item>
+        <item name="android:overScrollMode">never</item>
+        <item name="android:scrollbars">none</item>
+    </style>
+
+    <style name="DefaultButton" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="backgroundTint">@color/colorPrimaryDark</item>
+        <item name="rippleColor">@color/colorSecondary</item>
+        <item name="cornerRadius">@dimen/small_corner_2</item>
+        <item name="android:layout_margin">@dimen/small_8</item>
+        <item name="android:textAppearance">@style/ButtonTextAppearance</item>
+    </style>
+
+    <style name="ButtonTextAppearance" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:textSize">@dimen/text_14</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/text_white</item>
+    </style>
+
+    <style name="SearchBar">
+        <item name="android:paddingStart">@dimen/small_8</item>
+        <item name="android:paddingEnd">@dimen/medium_16</item>
+        <item name="android:elevation">@dimen/search_elevation</item>
+        <item name="android:background">@drawable/rounded_text_outline</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:imeOptions">actionSearch</item>
+        <item name="android:inputType">text|textCapSentences</item>
+        <item name="android:textColor">@color/text_black</item>
+        <item name="android:textColorHint">@color/text_grey</item>
+        <item name="android:textSize">@dimen/text_14</item>
+        <item name="android:drawableStart">@drawable/ic_search</item>
+        <item name="android:drawablePadding">@dimen/small_8</item>
+        <item name="android:maxLength">100</item>
+    </style>
+</resources>

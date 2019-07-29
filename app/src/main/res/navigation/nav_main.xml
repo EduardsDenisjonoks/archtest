@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.exail.archtest.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_catsFragment"
+            app:destination="@id/catsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/mainFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_catsPaginatedFragment"
+            app:destination="@id/catsPaginatedFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/mainFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_chuckNorrisFragment"
+            app:destination="@id/chuckNorrisFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/mainFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_testFragment"
+            app:destination="@id/testGroundFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_mainFragment_to_starWarsFragment"
+            app:destination="@id/starWarsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/catsFragment"
+        android:name="com.exail.archtest.cats.CatsFragment"
+        android:label="fragment_cats"
+        tools:layout="@layout/fragment_cats" />
+    <fragment
+        android:id="@+id/catsPaginatedFragment"
+        android:name="com.exail.archtest.cats.CatsPaginatedFragment"
+        android:label="fragment_cats_paginated"
+        tools:layout="@layout/fragment_cats_paginated" />
+    <fragment
+        android:id="@+id/chuckNorrisFragment"
+        android:name="com.exail.archtest.chuck.norris.ChuckNorrisFragment"
+        android:label="fragment_chuck_norris"
+        tools:layout="@layout/fragment_chuck_norris" />
+    <fragment
+        android:id="@+id/testGroundFragment"
+        android:name="com.exail.archtest.test.TestGroundFragment"
+        android:label="fragment_test"
+        tools:layout="@layout/fragment_test_ground" />
+    <fragment
+        android:id="@+id/starWarsFragment"
+        android:name="com.exail.archtest.sw.StarWarsFragment"
+        android:label="fragment_star_wars"
+        tools:layout="@layout/fragment_star_wars" >
+        <action
+            android:id="@+id/action_starWarsFragment_to_peoplesFragment"
+            app:destination="@id/peoplesFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/starWarsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/peoplesFragment"
+        android:name="com.exail.archtest.sw.people.PeopleFragment"
+        android:label="fragment_peoples"
+        tools:layout="@layout/fragment_people" >
+        <action
+            android:id="@+id/action_peoplesFragment_to_personFragment"
+            app:destination="@id/personFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/personFragment"
+        android:name="com.exail.archtest.sw.people.PersonFragment"
+        android:label="fragment_person"
+        tools:layout="@layout/fragment_person" />
+</navigation>
