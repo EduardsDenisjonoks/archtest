@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.exail.archtest.chuck.norris.models.Joke
 import com.exail.archtest.chuck.norris.repository.ChuckNorrisRepository
 import com.exail.archtest.core.custom.SingleLiveEvent
+import com.exail.archtest.core.network.ErrorEntity
 import com.exail.archtest.core.network.ApiResult
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -42,7 +43,7 @@ class ChuckNorrisViewModel(private val chuckNorrisRepository: ChuckNorrisReposit
             showLoading.value = false
             when (result) {
                 is ApiResult.Success -> joke.value = result.data
-                is ApiResult.Error -> showError.value = result.exception.message
+                is ApiResult.Error -> showError.value = result.error.originalException.localizedMessage
             }
         }
     }

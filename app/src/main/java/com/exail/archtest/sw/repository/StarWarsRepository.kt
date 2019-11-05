@@ -1,6 +1,7 @@
 package com.exail.archtest.sw.repository
 
 import com.exail.archtest.core.network.ApiResult
+import com.exail.archtest.core.network.ErrorEntity
 import com.exail.archtest.core.network.PagingResponse
 import com.exail.archtest.sw.models.*
 import kotlinx.coroutines.Dispatchers
@@ -49,7 +50,7 @@ class StarWarsRepositoryImpl(private val starWarsApi: StarWarsApi) : StarWarsRep
                 val result = starWarsApi.getFilmById(id).await()
                 ApiResult.Success(result)
             } catch (ex: Exception) {
-                ApiResult.Error(ex)
+                ApiResult.Error(ErrorEntity.Unknown(ex))
             }
         }
     }
@@ -60,7 +61,7 @@ class StarWarsRepositoryImpl(private val starWarsApi: StarWarsApi) : StarWarsRep
                 val result = starWarsApi.getFilms(searchQuery).await()
                 ApiResult.Success(result)
             } catch (ex: Exception) {
-                ApiResult.Error(ex)
+                ApiResult.Error(ErrorEntity.Unknown(ex))
             }
         }
     }
@@ -73,7 +74,7 @@ class StarWarsRepositoryImpl(private val starWarsApi: StarWarsApi) : StarWarsRep
                 val result = starWarsApi.getPeopleById(id).await()
                 ApiResult.Success(result)
             } catch (ex: Exception) {
-                ApiResult.Error(ex)
+                ApiResult.Error(ErrorEntity.Unknown(ex))
             }
         }
     }
@@ -87,7 +88,7 @@ class StarWarsRepositoryImpl(private val starWarsApi: StarWarsApi) : StarWarsRep
                 val result = starWarsApi.getPeoples(page, searchQuery).await()
                 ApiResult.Success(result)
             } catch (ex: Exception) {
-                ApiResult.Error(ex)
+                ApiResult.Error(ErrorEntity.Unknown(ex))
             }
         }
     }
@@ -100,7 +101,7 @@ class StarWarsRepositoryImpl(private val starWarsApi: StarWarsApi) : StarWarsRep
                 val result = starWarsApi.getPlanetById(id).await()
                 ApiResult.Success(result)
             } catch (ex: Exception) {
-                ApiResult.Error(ex)
+                ApiResult.Error(ErrorEntity.Unknown(ex))
             }
         }
     }
@@ -111,7 +112,7 @@ class StarWarsRepositoryImpl(private val starWarsApi: StarWarsApi) : StarWarsRep
                 val result = starWarsApi.getPlanets(searchQuery).await()
                 ApiResult.Success(result)
             } catch (ex: Exception) {
-                ApiResult.Error(ex)
+                ApiResult.Error(ErrorEntity.Unknown(ex))
             }
         }
     }
@@ -124,7 +125,7 @@ class StarWarsRepositoryImpl(private val starWarsApi: StarWarsApi) : StarWarsRep
                 val result = starWarsApi.getSpecieById(id).await()
                 ApiResult.Success(result)
             } catch (ex: Exception) {
-                ApiResult.Error(ex)
+                ApiResult.Error(ErrorEntity.Unknown(ex))
             }
         }
     }
@@ -135,7 +136,7 @@ class StarWarsRepositoryImpl(private val starWarsApi: StarWarsApi) : StarWarsRep
                 val result = starWarsApi.getSpecies(searchQuery).await()
                 ApiResult.Success(result)
             } catch (ex: Exception) {
-                ApiResult.Error(ex)
+                ApiResult.Error(ErrorEntity.Unknown(ex))
             }
         }
     }
@@ -148,7 +149,7 @@ class StarWarsRepositoryImpl(private val starWarsApi: StarWarsApi) : StarWarsRep
                 val result = starWarsApi.getStarShipById(id).await()
                 ApiResult.Success(result)
             } catch (ex: Exception) {
-                ApiResult.Error(ex)
+                ApiResult.Error(ErrorEntity.Unknown(ex))
             }
         }
     }
@@ -159,7 +160,7 @@ class StarWarsRepositoryImpl(private val starWarsApi: StarWarsApi) : StarWarsRep
                 val result = starWarsApi.getStarShips(searchQuery).await()
                 ApiResult.Success(result)
             } catch (ex: Exception) {
-                ApiResult.Error(ex)
+                ApiResult.Error(ErrorEntity.Unknown(ex))
             }
         }
     }
@@ -172,7 +173,7 @@ class StarWarsRepositoryImpl(private val starWarsApi: StarWarsApi) : StarWarsRep
                 val result = starWarsApi.getVehicleById(id).await()
                 ApiResult.Success(result)
             } catch (ex: Exception) {
-                ApiResult.Error(ex)
+                ApiResult.Error(ErrorEntity.Unknown(ex))
             }
         }
     }
@@ -183,7 +184,7 @@ class StarWarsRepositoryImpl(private val starWarsApi: StarWarsApi) : StarWarsRep
                 val result = starWarsApi.getVehicles(searchQuery).await()
                 ApiResult.Success(result)
             } catch (ex: Exception) {
-                ApiResult.Error(ex)
+                ApiResult.Error(ErrorEntity.Unknown(ex))
             }
         }
     }

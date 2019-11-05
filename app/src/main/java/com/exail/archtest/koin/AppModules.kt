@@ -17,7 +17,6 @@ import com.exail.archtest.sw.view.model.PeopleViewModel
 import com.exail.archtest.test.view.model.TestGroundViewModel
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -85,7 +84,6 @@ inline fun <reified T> createWebService(
     val retrofit = Retrofit.Builder()
         .baseUrl(baseUrl)
         .addConverterFactory(GsonConverterFactory.create(gson))
-        .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .client(okHttpClient)
         .build()
     return retrofit.create(T::class.java)
