@@ -2,7 +2,6 @@ package com.exail.archtest.chuck.norris.repository
 
 import com.exail.archtest.chuck.norris.models.Joke
 import com.exail.archtest.core.network.ApiResult
-import com.exail.archtest.core.network.ErrorEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -21,12 +20,12 @@ class ChuckNorrisRepositoryImpl(private val chuckNorrisApi: ChuckNorrisApi) : Ch
                 val result = chuckNorrisApi.getRandomJoke().await()
                 val joke = result.joke
                 if (joke == null){
-                    ApiResult.Error(ErrorEntity.NotFound(Throwable("Joke data is missing")))
+                    ApiResult.error(Throwable("Joke data is missing"))
                 } else {
                     ApiResult.Success(joke)
                 }
             } catch (ex: Exception) {
-                ApiResult.Error(ErrorEntity.Unknown(ex))
+                ApiResult.error(ex)
             }
         }
     }

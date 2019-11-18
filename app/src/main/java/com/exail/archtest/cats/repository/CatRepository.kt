@@ -2,7 +2,6 @@ package com.exail.archtest.cats.repository
 
 import com.exail.archtest.cats.models.Cat
 import com.exail.archtest.core.network.ApiResult
-import com.exail.archtest.core.network.ErrorEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Call
@@ -23,12 +22,12 @@ class CatRepositoryImpl(private val catApi: CatApi) : CatRepository {
             try {
                 val response = catApi.getCats(limit = 30)
                 if (response.isSuccessful){
-                    ApiResult.Success(response.body() ?: emptyList())
+                    ApiResult.success(response.body() ?: emptyList())
                 } else {
-                    ApiResult.Error(ErrorEntity.Unknown(Throwable("Unknown")))
+                    ApiResult.error(response)
                 }
             } catch (ex: Exception) {
-                ApiResult.Error(ErrorEntity.Unknown(ex))
+                ApiResult.error(ex)
             }
         }
     }

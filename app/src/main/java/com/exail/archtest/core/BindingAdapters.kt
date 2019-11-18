@@ -43,9 +43,9 @@ fun AppCompatTextView.setInt(value: Int?) {
 
 @BindingAdapter("resource")
 fun AppCompatTextView.setRes(@StringRes value: Int?) {
-    when (value){
-        null -> text = null
-        -1 -> text = null
-        else -> text = context.getString(value)
+    text = when (value){
+        null -> null
+        -1 -> null
+        else -> context.getString(value)
     }
 }

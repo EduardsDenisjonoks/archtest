@@ -19,6 +19,9 @@
     <string name="sw_star_ships">Star ships</string>
     <string name="sw_vehicles">Vehicles</string>
 
-
-
+    <string name="error_not_found">Not found</string>
+    <string name="error_access_denies">Access denied</string>
+    <string name="error_something_went_wrong">Something went wrong</string>
+    <string name="error_service_unavailable">Service unavailable</string>
+    <string name="error_test">Test error</string>
 </resources>
