@@ -1,6 +1,5 @@
 package com.exail.archtest.sw.models.data.source
 
-import android.util.Log
 import androidx.paging.PageKeyedDataSource
 import com.exail.archtest.core.network.ApiResult
 import com.exail.archtest.sw.getIdFromUrl
@@ -8,6 +7,7 @@ import com.exail.archtest.sw.models.People
 import com.exail.archtest.sw.repository.StarWarsRepository
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 /**
  * Created by eduardsdenisjonoks  on 2019-06-06.
@@ -34,7 +34,7 @@ class PeopleDataSource(
                     )
                 }
                 is ApiResult.Error -> {
-                    Log.e("Ed", "Initial load error")
+                    Timber.e("Initial load error")
                 }
             }
         }
@@ -51,7 +51,7 @@ class PeopleDataSource(
                     )
                 }
                 is ApiResult.Error -> {
-                    Log.e("Ed", "After load error")
+                    Timber.e( "After load error")
                 }
             }
         }
@@ -68,7 +68,7 @@ class PeopleDataSource(
                     )
                 }
                 is ApiResult.Error -> {
-                    Log.e("Ed", "Before load error")
+                    Timber.e("Before load error")
                 }
             }
         }
