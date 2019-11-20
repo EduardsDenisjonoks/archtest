@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
+import com.exail.archtest.core.navigateTo
 import com.exail.archtest.databinding.FragmentMainBinding
 import com.google.android.material.button.MaterialButton
 
@@ -38,23 +39,23 @@ class MainFragment : Fragment() {
     }
 
     private fun initCatButton(button: MaterialButton) {
-        button.setOnClickListener { Navigation.findNavController(it).navigate(R.id.catsFragment) }
+        button.setOnClickListener { it.navigateTo(R.id.catsFragment) }
     }
 
     private fun initCatPaginatedButton(button: MaterialButton) {
-        button.setOnClickListener { Navigation.findNavController(it).navigate(R.id.catsPaginatedFragment) }
+        button.setOnClickListener { it.navigateTo(R.id.catsPaginatedFragment) }
     }
 
     private fun initChuckNorrisButton(button: MaterialButton) {
-        button.setOnClickListener { Navigation.findNavController(it).navigate(R.id.chuckNorrisFragment) }
+        button.setOnClickListener { it.navigateTo(R.id.chuckNorrisFragment) }
     }
 
     private fun initTestGroundButton(button: MaterialButton) {
-        button.setOnClickListener {  Navigation.findNavController(it).navigate(R.id.testGroundFragment) }
+        button.setOnClickListener { it.navigateTo(R.id.testGroundFragment) }
     }
 
     private fun initStarWarsButton(button: MaterialButton){
-        button.setOnClickListener {  Navigation.findNavController(it).navigate(R.id.starWarsFragment) }
+        button.setOnClickListener { it.navigateTo(R.id.starWarsFragment) }
     }
 
 }

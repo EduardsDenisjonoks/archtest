@@ -7,6 +7,7 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.exail.archtest.R
 import com.exail.archtest.core.adapters.DiffItemCallback
+import com.exail.archtest.core.navigateTo
 import com.exail.archtest.databinding.SwItemPersonBinding
 import com.exail.archtest.sw.models.People
 
@@ -34,8 +35,8 @@ class PeopleAdapter : PagedListAdapter<People, PeopleAdapter.SwItem>(DiffItemCal
     class SwItem(private val binding: SwItemPersonBinding) : RecyclerView.ViewHolder(binding.root) {
 
         init {
-            binding.root.setOnClickListener { v ->
-
+            binding.root.setOnClickListener { view ->
+                view.navigateTo(R.id.action_peoplesFragment_to_personFragment)
             }
         }
 

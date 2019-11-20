@@ -26,7 +26,8 @@ class ArchTestApplication : Application() {
 }
 
 class ProductionTree : Timber.Tree() {
-    override fun isLoggable(tag: String?, priority: Int) = priority == Log.ERROR || priority == Log.WARN
+    override fun isLoggable(tag: String?, priority: Int) =
+        priority == Log.ERROR || priority == Log.WARN
 
     override fun log(priority: Int, tag: String?, message: String, t: Throwable?) =
         when (priority) {
