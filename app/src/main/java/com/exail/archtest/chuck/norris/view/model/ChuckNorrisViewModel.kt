@@ -26,8 +26,8 @@ class ChuckNorrisViewModel(private val chuckNorrisRepository: ChuckNorrisReposit
     private val joke = MutableLiveData<Joke?>()
 
     val showLoading = MutableLiveData<Boolean>()
-    val showError = SingleLiveEvent<String>()
-    val jokeText : LiveData<String?>
+    val showError = SingleLiveEvent<Int>()
+    val jokeText : LiveData<String>
 
     init {
         jokeText = Transformations.map(joke) { input -> input?.joke }
@@ -42,7 +42,7 @@ class ChuckNorrisViewModel(private val chuckNorrisRepository: ChuckNorrisReposit
             showLoading.value = false
             when (result) {
                 is ApiResult.Success -> joke.value = result.data
-                is ApiResult.Error -> showError.value = result.appError.errorString
+                is ApiResult.Error -> showError.value = result.appError.errorResource
             }
         }
     }

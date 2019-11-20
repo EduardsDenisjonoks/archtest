@@ -24,4 +24,6 @@
     <string name="error_something_went_wrong">Something went wrong</string>
     <string name="error_service_unavailable">Service unavailable</string>
     <string name="error_test">Test error</string>
+    <string name="error_no_joke">Unable to retrieve joke</string>
+    <string name="error_invalid_host">Unable to connect host</string>
 </resources>
