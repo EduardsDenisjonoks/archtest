@@ -14,7 +14,6 @@ class PeopleDataFactory(
     private val searchQuery: String?
 ) : DataSource.Factory<Int, People>() {
 
-
     val peopleLiveData = MutableLiveData<PeopleDataSource>()
 
     override fun create(): DataSource<Int, People> {
@@ -23,5 +22,8 @@ class PeopleDataFactory(
         return peopleDataSource
     }
 
+    fun refresh(){
+        peopleLiveData.value?.invalidate()
+    }
 
 }

@@ -38,7 +38,7 @@ class CatPaginatedViewModel(catRepository: CatRepository) : ViewModel() {
     }
 
     fun refreshData(){
-        factory.catLiveData.value?.invalidate()
+        factory.refresh()
     }
 
     override fun onCleared() {
