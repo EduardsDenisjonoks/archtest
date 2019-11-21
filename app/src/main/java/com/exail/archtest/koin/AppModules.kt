@@ -1,5 +1,6 @@
 package com.exail.archtest.koin
 
+import android.content.Context
 import com.exail.archtest.cats.repository.CatApi
 import com.exail.archtest.cats.repository.CatRepository
 import com.exail.archtest.cats.repository.CatRepositoryImpl
@@ -9,12 +10,14 @@ import com.exail.archtest.chuck.norris.repository.ChuckNorrisApi
 import com.exail.archtest.chuck.norris.repository.ChuckNorrisRepository
 import com.exail.archtest.chuck.norris.repository.ChuckNorrisRepositoryImpl
 import com.exail.archtest.chuck.norris.view.model.ChuckNorrisViewModel
+import com.exail.archtest.core.Analytics
 import com.exail.archtest.sw.models.*
 import com.exail.archtest.sw.repository.StarWarsApi
 import com.exail.archtest.sw.repository.StarWarsRepository
 import com.exail.archtest.sw.repository.StarWarsRepositoryImpl
 import com.exail.archtest.sw.view.model.PeopleViewModel
 import com.exail.archtest.test.view.model.TestGroundViewModel
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -33,6 +36,8 @@ const val CHUCK_NORRIS_API_BASE_URL = "https://api.icndb.com/"
 const val SW_API_BASE_URL = "https://swapi.co/api/"
 
 val appModules = module {
+    single { Analytics(analyticsInstance = getFirebaseAnalyticsInstance(context = get())) }
+
     single { createHttpClient() }
     single { createWebService<CatApi>(OkHttpClient(), createGson(), CAT_API_BASE_URL) }
     single { createWebService<ChuckNorrisApi>(OkHttpClient(), createGson(), CHUCK_NORRIS_API_BASE_URL) }
@@ -48,6 +53,9 @@ val appModules = module {
     viewModel { TestGroundViewModel() }
     viewModel { PeopleViewModel(starWarsRepository = get()) }
 }
+
+/* Get Firebase Analytics instance */
+fun getFirebaseAnalyticsInstance(context: Context) = FirebaseAnalytics.getInstance(context)
 
 /* Returns an OkHttpClient instance used for building Retrofit service */
 fun createHttpClient(): OkHttpClient {

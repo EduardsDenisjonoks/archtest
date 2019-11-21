@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.exail.archtest.R
+import com.exail.archtest.core.base.BaseFragment
 import com.exail.archtest.databinding.FragmentStarWarsBinding
 import com.exail.archtest.sw.adapters.StarWarAdapter
 
@@ -19,7 +20,7 @@ import com.exail.archtest.sw.adapters.StarWarAdapter
  * A simple [Fragment] subclass.
  *
  */
-class StarWarsFragment : Fragment() {
+class StarWarsFragment : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,6 +34,7 @@ class StarWarsFragment : Fragment() {
         )
 
         intiListView(binding.starWarsList)
+        analytics.eventOpenStarWardScreen()
 
         return binding.root
     }

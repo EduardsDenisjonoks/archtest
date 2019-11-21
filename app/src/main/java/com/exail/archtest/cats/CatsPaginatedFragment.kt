@@ -15,6 +15,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.exail.archtest.R
 import com.exail.archtest.cats.adapters.CatPaginatedAdapter
 import com.exail.archtest.cats.view.models.CatPaginatedViewModel
+import com.exail.archtest.core.base.BaseFragment
 import com.exail.archtest.databinding.FragmentCatsPaginatedBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -23,7 +24,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
  * A simple [Fragment] subclass.
  *
  */
-class CatsPaginatedFragment : Fragment() {
+class CatsPaginatedFragment : BaseFragment() {
 
 
     private val catPaginatedViewModel: CatPaginatedViewModel by viewModel()
@@ -44,6 +45,7 @@ class CatsPaginatedFragment : Fragment() {
         initCatListView(binding.catListView)
         initLoaderView(binding.srlCatList)
         initViewModel()
+        analytics.eventOpenCatPaginatedScreen()
 
         return binding.root
     }

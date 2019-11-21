@@ -1,10 +1,9 @@
 package com.exail.archtest
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.exail.archtest.R
+import com.exail.archtest.core.base.BaseActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
