@@ -4,29 +4,26 @@ import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
 import com.exail.archtest.core.network.ApiResult
 import com.exail.archtest.sw.getIdFromUrl
-import com.exail.archtest.sw.models.People
+import com.exail.archtest.sw.models.Film
 import com.exail.archtest.sw.repository.StarWarsRepository
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-/**
- * Created by eduardsdenisjonoks  on 2019-06-06.
- */
-class PeopleDataSource(
+class FilmDataSource (
     private val starWarsRepository: StarWarsRepository,
     private val searchQuery: String?
-) : PageKeyedDataSource<Int, People>() {
+) : PageKeyedDataSource<Int, Film>() {
 
     val initialLoading = MutableLiveData<Boolean>()
 
     override fun loadInitial(
         params: LoadInitialParams<Int>,
-        callback: LoadInitialCallback<Int, People>
+        callback: LoadInitialCallback<Int, Film>
     ) {
         GlobalScope.launch {
             initialLoading.postValue(true)
-            when (val result = starWarsRepository.getPeoples(1, searchQuery)) {
+            when (val result = starWarsRepository.getFilms(1, searchQuery)) {
                 is ApiResult.Success -> {
                     val previous = getIdFromUrl(result.data.previous)
                     val next = getIdFromUrl(result.data.next)
@@ -37,7 +34,7 @@ class PeopleDataSource(
                     )
                 }
                 is ApiResult.Empty -> {
-                    callback.onResult(emptyList<People>(), 1, 2)
+                    callback.onResult(emptyList<Film>(), 1, 2)
                 }
                 is ApiResult.Error -> {
                     Timber.e("Initial load error")
@@ -47,9 +44,9 @@ class PeopleDataSource(
         }
     }
 
-    override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, People>) {
+    override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Film>) {
         GlobalScope.launch {
-            when (val result = starWarsRepository.getPeoples(params.key, searchQuery)) {
+            when (val result = starWarsRepository.getFilms(params.key, searchQuery)) {
                 is ApiResult.Success -> {
                     val next = getIdFromUrl(result.data.next)
                     callback.onResult(
@@ -58,7 +55,7 @@ class PeopleDataSource(
                     )
                 }
                 is ApiResult.Empty -> {
-                    callback.onResult(emptyList<People>(), params.key)
+                    callback.onResult(emptyList<Film>(), params.key)
                 }
                 is ApiResult.Error -> {
                     Timber.e( "After load error")
@@ -67,9 +64,9 @@ class PeopleDataSource(
         }
     }
 
-    override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, People>) {
+    override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Film>) {
         GlobalScope.launch {
-            when (val result = starWarsRepository.getPeoples(params.key, searchQuery)) {
+            when (val result = starWarsRepository.getFilms(params.key, searchQuery)) {
                 is ApiResult.Success -> {
                     val previous = getIdFromUrl(result.data.previous)
                     callback.onResult(
@@ -78,7 +75,7 @@ class PeopleDataSource(
                     )
                 }
                 is ApiResult.Empty -> {
-                    callback.onResult(emptyList<People>(), params.key)
+                    callback.onResult(emptyList<Film>(), params.key)
                 }
                 is ApiResult.Error -> {
                     Timber.e("Before load error")

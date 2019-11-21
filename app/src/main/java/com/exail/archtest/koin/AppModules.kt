@@ -1,6 +1,7 @@
 package com.exail.archtest.koin
 
 import android.content.Context
+import com.exail.archtest.BuildConfig
 import com.exail.archtest.cats.repository.CatApi
 import com.exail.archtest.cats.repository.CatRepository
 import com.exail.archtest.cats.repository.CatRepositoryImpl
@@ -15,16 +16,19 @@ import com.exail.archtest.sw.models.*
 import com.exail.archtest.sw.repository.StarWarsApi
 import com.exail.archtest.sw.repository.StarWarsRepository
 import com.exail.archtest.sw.repository.StarWarsRepositoryImpl
+import com.exail.archtest.sw.view.model.FilmsViewModel
 import com.exail.archtest.sw.view.model.PeopleViewModel
 import com.exail.archtest.test.view.model.TestGroundViewModel
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
 /**
@@ -39,9 +43,9 @@ val appModules = module {
     single { Analytics(analyticsInstance = getFirebaseAnalyticsInstance(context = get())) }
 
     single { createHttpClient() }
-    single { createWebService<CatApi>(OkHttpClient(), createGson(), CAT_API_BASE_URL) }
-    single { createWebService<ChuckNorrisApi>(OkHttpClient(), createGson(), CHUCK_NORRIS_API_BASE_URL) }
-    single { createWebService<StarWarsApi>(OkHttpClient(), createSwGson(), SW_API_BASE_URL) }
+    single { createWebService<CatApi>(get(), createGson(), CAT_API_BASE_URL) }
+    single { createWebService<ChuckNorrisApi>(get(), createGson(), CHUCK_NORRIS_API_BASE_URL) }
+    single { createWebService<StarWarsApi>(get(), createSwGson(), SW_API_BASE_URL) }
 
     factory<CatRepository> { CatRepositoryImpl(catApi = get()) }
     factory<ChuckNorrisRepository> { ChuckNorrisRepositoryImpl(chuckNorrisApi = get()) }
@@ -52,6 +56,7 @@ val appModules = module {
     viewModel { ChuckNorrisViewModel(chuckNorrisRepository = get()) }
     viewModel { TestGroundViewModel() }
     viewModel { PeopleViewModel(starWarsRepository = get()) }
+    viewModel { FilmsViewModel(starWarsRepository = get()) }
 }
 
 /* Get Firebase Analytics instance */
@@ -61,11 +66,19 @@ fun getFirebaseAnalyticsInstance(context: Context) = FirebaseAnalytics.getInstan
 fun createHttpClient(): OkHttpClient {
     val client = OkHttpClient.Builder()
     client.readTimeout(5 * 60, TimeUnit.SECONDS)
+    if (BuildConfig.DEBUG) {
+        client.addInterceptor(HttpLoggingInterceptor(object: HttpLoggingInterceptor.Logger{
+            override fun log(message: String) {
+                Timber.tag("NETWORK").d(message)
+            }
+
+        }).apply { level = HttpLoggingInterceptor.Level.BODY })
+    }
     return client.addInterceptor {
         val original = it.request()
         val requestBuilder = original.newBuilder()
         requestBuilder.header("Content-Type", "application/json")
-        val request = requestBuilder.method(original.method(), original.body()).build()
+        val request = requestBuilder.method(original.method, original.body).build()
         return@addInterceptor it.proceed(request)
     }.build()
 }

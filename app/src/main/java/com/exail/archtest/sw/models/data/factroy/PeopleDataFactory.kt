@@ -11,7 +11,7 @@ import com.exail.archtest.sw.repository.StarWarsRepository
  */
 class PeopleDataFactory(
     private val starWarsRepository: StarWarsRepository,
-    private val searchQuery: String?
+    private var searchQuery: String?
 ) : DataSource.Factory<Int, People>() {
 
     val peopleLiveData = MutableLiveData<PeopleDataSource>()
@@ -20,6 +20,11 @@ class PeopleDataFactory(
         val peopleDataSource = PeopleDataSource(starWarsRepository, searchQuery)
         peopleLiveData.postValue(peopleDataSource)
         return peopleDataSource
+    }
+
+    fun setSearchQuery(query: String?){
+        searchQuery = query
+        refresh()
     }
 
     fun refresh(){

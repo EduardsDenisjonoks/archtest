@@ -67,4 +67,5 @@ class SwUtilsKtTest {
         assertEquals(listOf(1,12,14), resultTwo)
         assertEquals(listOf(14), resultThree)
     }
+
 }

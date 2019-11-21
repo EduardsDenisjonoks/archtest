@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".sw.people.PeopleFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".sw.films.FilmsFragment">
 
     <data>
         <variable
-            name="peopleVm"
-            type="com.exail.archtest.sw.view.model.PeopleViewModel" />
+            name="filmsVm"
+            type="com.exail.archtest.sw.view.model.FilmsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,7 +24,7 @@
             app:layout_constraintTop_toBottomOf="@+id/search_bar">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/people_list_view"
+                android:id="@+id/film_list_view"
                 style="@style/DefaultScroll"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -39,7 +39,7 @@
             android:layout_height="?attr/actionBarSize"
             android:layout_margin="@dimen/medium_16"
             android:hint="@string/hint_search"
-            android:text="@={peopleVm.search}"
+            android:text="@={filmsVm.search}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

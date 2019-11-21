@@ -45,7 +45,8 @@ class StarWarAdapter : RecyclerView.Adapter<StarWarAdapter.SwItem>() {
         init {
             binding.root.setOnClickListener { view ->
                 when (adapterPosition) {
-                    1 -> view.navigateTo(R.id.peoplesFragment)
+                    0 -> view.navigateTo(R.id.action_starWarsFragment_to_filmsFragment)
+                    1 -> view.navigateTo(R.id.action_starWarsFragment_to_peoplesFragment)
                 }
 
             }

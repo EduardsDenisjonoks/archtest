@@ -1,4 +1,4 @@
-package com.exail.archtest.sw.people
+package com.exail.archtest.sw.films
 
 
 import android.os.Bundle
@@ -11,23 +11,21 @@ import androidx.navigation.fragment.navArgs
 
 import com.exail.archtest.R
 
-
 /**
  * A simple [Fragment] subclass.
- *
  */
-class PersonFragment : Fragment() {
+class FilmFragment : Fragment() {
 
-    private val args : PersonFragmentArgs by navArgs()
+    private val args : FilmFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        Toast.makeText(context, args.person?.name ?: "no name", Toast.LENGTH_LONG).show()
+        Toast.makeText(context, args.film?.title ?: "no title", Toast.LENGTH_LONG).show()
 
-        return inflater.inflate(R.layout.fragment_person, container, false)
+        return inflater.inflate(R.layout.fragment_film, container, false)
     }
 
 
