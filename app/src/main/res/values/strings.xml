@@ -9,6 +9,11 @@
     <string name="btn_plus">Plus</string>
     <string name="btn_minus">Minus</string>
     <string name="btn_star_wars">Star Wars</string>
+    <string name="btn_bottom_nav">Bottom Navigation</string>
+    <string name="btn_nav_to_four">Navigate to four</string>
+    <string name="btn_nav_to_five">Navigate to five</string>
+    <string name="btn_pop_up">Pop Up</string>
+    <string name="btn_back_to_three">Back to three</string>
 
     <string name="hint_search">Search…</string>
 
@@ -21,6 +26,18 @@
     <string name="sw_director">Director:</string>
     <string name="sw_producer">Producer(s):</string>
     <string name="sw_episode">Episode</string>
+
+    <string name="bottom_one">1</string>
+    <string name="bottom_two">2</string>
+    <string name="bottom_three">3</string>
+    <string name="bottom_four">4</string>
+    <string name="bottom_five">5</string>
+
+    <string name="nav_one">One</string>
+    <string name="nav_two">Two</string>
+    <string name="nav_three">Three</string>
+    <string name="nav_four">Four</string>
+    <string name="nav_five">Five</string>
 
     <string name="error_not_found">Not found</string>
     <string name="error_access_denies">Access denied</string>

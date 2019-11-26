@@ -29,6 +29,22 @@ fun View.navigateTo(navDirections: NavDirections) {
     }
 }
 
+fun View.navigatePopUpTo(@IdRes destination: Int, inclusive: Boolean = true) {
+    try {
+        Navigation.findNavController(this).popBackStack(destination, inclusive)
+    } catch (ex: Exception) {
+        Timber.e(ex, "Unable to pop up to from this view")
+    }
+}
+
+fun View.navigatePopUp() {
+    try {
+        Navigation.findNavController(this).popBackStack()
+    } catch (ex: Exception) {
+        Timber.e(ex, "Unable to pop up from this view")
+    }
+}
+
 
 fun Fragment.navigateTo(@IdRes destination: Int) {
     try {

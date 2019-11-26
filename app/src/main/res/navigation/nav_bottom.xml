@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_bottom"
+    app:startDestination="@id/navigation_two">
+
+    <fragment
+        android:id="@+id/navigation_one"
+        android:name="com.exail.archtest.bottom.NavOneFragment"
+        android:label="@string/nav_one"
+        tools:layout="@layout/fragment_nav_one" />
+    <fragment
+        android:id="@+id/navigation_two"
+        android:name="com.exail.archtest.bottom.NavTwoFragment"
+        android:label="@string/nav_two"
+        tools:layout="@layout/fragment_nav_two" />
+    <fragment
+        android:id="@+id/navigation_three"
+        android:name="com.exail.archtest.bottom.NavThreeFragment"
+        android:label="@string/nav_three"
+        tools:layout="@layout/fragment_nav_three" >
+        <action
+            android:id="@+id/action_navigation_three_to_navigation_four"
+            app:destination="@id/navigation_four"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/navigation_three" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_four"
+        android:name="com.exail.archtest.bottom.NavFourFragment"
+        android:label="@string/nav_four"
+        tools:layout="@layout/fragment_nav_four" >
+        <action
+            android:id="@+id/action_navigation_four_to_navigation_five"
+            app:destination="@id/navigation_five"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/navigation_four" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_five"
+        android:name="com.exail.archtest.bottom.NavFiveFragment"
+        android:label="@string/nav_five"
+        tools:layout="@layout/fragment_nav_five" >
+        <action
+            android:id="@+id/action_navigation_five_to_navigation_three"
+            app:destination="@id/navigation_three"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/navigation_three"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

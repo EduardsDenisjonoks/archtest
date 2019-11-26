@@ -1,13 +1,14 @@
 package com.exail.archtest
 
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.Navigation
+import com.exail.archtest.bottom.BottomNavActivity
 import com.exail.archtest.core.navigateTo
 import com.exail.archtest.databinding.FragmentMainBinding
 import com.google.android.material.button.MaterialButton
@@ -34,6 +35,7 @@ class MainFragment : Fragment() {
         initChuckNorrisButton(binding.btnChuckNorris)
         initTestGroundButton(binding.btnTestGround)
         initStarWarsButton(binding.btnStarWars)
+        initBottomNavButton(binding.btnBottomNav)
 
         return binding.root
     }
@@ -56,6 +58,10 @@ class MainFragment : Fragment() {
 
     private fun initStarWarsButton(button: MaterialButton){
         button.setOnClickListener { it.navigateTo(R.id.starWarsFragment) }
+    }
+
+    private fun initBottomNavButton(button: MaterialButton){
+        button.setOnClickListener { context?.startActivity(Intent(context, BottomNavActivity::class.java)) }
     }
 
 }
