@@ -3,6 +3,7 @@ package com.exail.archtest.sw.models
 import android.os.Parcelable
 import com.exail.archtest.sw.convertJsonArrayToIds
 import com.exail.archtest.sw.getIdFromUrl
+import com.exail.archtest.sw.models.def.FilmEpisode
 import com.exail.archtest.sw.releaseDateStringToDate
 import com.google.gson.JsonDeserializer
 import com.google.gson.annotations.Expose
@@ -35,7 +36,7 @@ data class Film(
     val openingCrawl: String = "",
     @Expose
     @SerializedName("episode_id")
-    val episodeId: Int = -1,
+    @FilmEpisode val episodeId: Int = -1,
     @Expose
     @SerializedName("characters")
     val characters: List<Int> = emptyList(),

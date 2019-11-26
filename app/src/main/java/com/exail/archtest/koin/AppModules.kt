@@ -16,6 +16,7 @@ import com.exail.archtest.sw.models.*
 import com.exail.archtest.sw.repository.StarWarsApi
 import com.exail.archtest.sw.repository.StarWarsRepository
 import com.exail.archtest.sw.repository.StarWarsRepositoryImpl
+import com.exail.archtest.sw.view.model.FilmViewModel
 import com.exail.archtest.sw.view.model.FilmsViewModel
 import com.exail.archtest.sw.view.model.PeopleViewModel
 import com.exail.archtest.test.view.model.TestGroundViewModel
@@ -57,6 +58,7 @@ val appModules = module {
     viewModel { TestGroundViewModel() }
     viewModel { PeopleViewModel(starWarsRepository = get()) }
     viewModel { FilmsViewModel(starWarsRepository = get()) }
+    viewModel { (film : Film?) -> FilmViewModel(film) }
 }
 
 /* Get Firebase Analytics instance */

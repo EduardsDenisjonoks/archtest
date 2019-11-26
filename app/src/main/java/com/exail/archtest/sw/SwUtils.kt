@@ -76,5 +76,5 @@ fun releaseDateToDateString(date: Date?): String? {
     if (date == null) {
         return null
     }
-    return SimpleDateFormat("yyyy-MM-d", Locale.getDefault()).format(date)
+    return SimpleDateFormat("yyyy MMM d", Locale.getDefault()).format(date)
 }

@@ -14,5 +14,7 @@
 
     <!-- SW -->
     <color name="sw_bg">#F8F5FC</color>
+    <color name="sw_bg_black">#000000</color>
     <color name="sw_item_bg">@color/colorPrimary</color>
+    <color name="sw_text_yellow">#FFEB3B</color>
 </resources>

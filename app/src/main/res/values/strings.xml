@@ -18,6 +18,9 @@
     <string name="sw_species">Species</string>
     <string name="sw_star_ships">Star ships</string>
     <string name="sw_vehicles">Vehicles</string>
+    <string name="sw_director">Director:</string>
+    <string name="sw_producer">Producer(s):</string>
+    <string name="sw_episode">Episode</string>
 
     <string name="error_not_found">Not found</string>
     <string name="error_access_denies">Access denied</string>
@@ -27,6 +30,4 @@
     <string name="error_no_joke">Unable to retrieve joke</string>
     <string name="error_invalid_host">Unable to connect host</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -42,6 +42,7 @@ class DebugTree : Timber.DebugTree() {
 
     override fun log(priority: Int, tag: String?, message: String, t: Throwable?) =
         when (priority) {
+            Log.DEBUG -> LogUtils.debug(tag ?: "", message, t)
             Log.ERROR -> LogUtils.error(tag ?: "", message, t)
             Log.WARN -> LogUtils.warn(tag ?: "", message, t)
             Log.INFO -> LogUtils.info(tag ?: "", message, t)

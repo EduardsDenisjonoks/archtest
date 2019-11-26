@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="date"
+            type="String" />
+        <variable
+            name="episode"
+            type="String" />
+        <variable
+            name="director"
+            type="String" />
+        <variable
+            name="producer"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/medium_16"
+        tools:background="@color/sw_bg_black">
+
+        <!-- RELEASE -->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/date_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{date}"
+            style="@style/TextDescription"
+            android:textStyle="normal"
+            tools:text="@tools:sample/date/ddmmyy"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintTop_toBottomOf="@+id/episode_label"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/barrier"/>
+
+        <!-- EPISODE-->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/episode_label_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextLabelSmall"
+            android:text="@string/sw_episode"
+            android:textAlignment="center"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/episode_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/barrier"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/episode_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextEpisode"
+            android:text="@{episode}"
+            tools:text="5"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintTop_toBottomOf="@+id/episode_label_view"
+            app:layout_constraintBottom_toTopOf="@+id/date_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/barrier" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            tools:layout_constraintHorizontal_bias="0.5"
+            app:barrierDirection="start"
+            app:constraint_referenced_ids="date_label,episode_label,episode_label_view"
+            tools:layout_constraintTop_toTopOf="parent"
+            tools:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_constraintStart_toStartOf="parent"
+            tools:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- DIRECTOR + PRODUCER -->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/director_label_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/medium_16"
+            style="@style/TextLabelSmall"
+            android:text="@string/sw_director"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/director_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/barrier"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/director_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/medium_16"
+            style="@style/TextLabel"
+            android:text="@{director}"
+            tools:text="@tools:sample/full_names"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintTop_toBottomOf="@+id/director_label_view"
+            app:layout_constraintBottom_toTopOf="@+id/producer_label_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/barrier"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/producer_label_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_16"
+            android:layout_marginEnd="@dimen/medium_16"
+            style="@style/TextLabelSmall"
+            android:text="@string/sw_producer"
+            app:layout_constraintTop_toBottomOf="@+id/director_label"
+            app:layout_constraintBottom_toTopOf="@+id/producer_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/barrier"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/producer_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/medium_16"
+            style="@style/TextLabel"
+            android:text="@{producer}"
+            tools:text="@tools:sample/full_names"
+            app:layout_constraintTop_toBottomOf="@+id/producer_label_view"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/barrier"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

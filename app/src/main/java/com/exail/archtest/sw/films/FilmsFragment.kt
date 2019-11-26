@@ -14,7 +14,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.exail.archtest.R
 import com.exail.archtest.core.base.BaseFragment
 import com.exail.archtest.databinding.FragmentFilmsBinding
-import com.exail.archtest.sw.adapters.FilmAdapter
+import com.exail.archtest.sw.adapters.FilmsAdapter
 import com.exail.archtest.sw.view.model.FilmsViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -25,7 +25,7 @@ class FilmsFragment : BaseFragment() {
 
     private val filmsViewModel: FilmsViewModel by viewModel()
     private lateinit var loaderView: SwipeRefreshLayout
-    private val filmAdapter: FilmAdapter by lazy { FilmAdapter() }
+    private val filmsAdapter: FilmsAdapter by lazy { FilmsAdapter() }
 
 
     override fun onCreateView(
@@ -54,7 +54,7 @@ class FilmsFragment : BaseFragment() {
 
     private fun initFilmListView(list: RecyclerView) {
         list.layoutManager = LinearLayoutManager(context)
-        list.adapter = filmAdapter
+        list.adapter = filmsAdapter
     }
 
     private fun initLoaderView(loaderView: SwipeRefreshLayout) {
@@ -66,7 +66,7 @@ class FilmsFragment : BaseFragment() {
 
     private fun initViewModel() {
         filmsViewModel.filmList.observe(viewLifecycleOwner, Observer { filmList ->
-            filmAdapter.submitList(filmList)
+            filmsAdapter.submitList(filmList)
         })
 
         filmsViewModel.showLoading.observe(
