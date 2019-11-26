@@ -11,7 +11,6 @@ class FilmViewModel(val film : Film?) : ViewModel() {
 
     val filmPoster : LiveData<Int>
 
-
     init {
         filmPoster = MutableLiveData<Int>().apply { value = getFilmPoster(film) }
     }
@@ -21,6 +20,9 @@ class FilmViewModel(val film : Film?) : ViewModel() {
         FilmEpisode.EPISODE_TWO -> R.drawable.episode_two
         FilmEpisode.EPISODE_THREE -> R.drawable.episode_three
         FilmEpisode.EPISODE_FOUR -> R.drawable.episode_four
+        FilmEpisode.EPISODE_FIVE -> R.drawable.episode_five
+        FilmEpisode.EPISODE_SIX -> R.drawable.episode_six
+        FilmEpisode.EPISODE_SEVEN -> R.drawable.epsiode_seven
         else -> -1
     }
 
