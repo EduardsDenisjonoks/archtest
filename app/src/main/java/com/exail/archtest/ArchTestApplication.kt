@@ -4,6 +4,8 @@ import android.app.Application
 import android.util.Log
 import com.exail.archtest.core.LogUtils
 import com.exail.archtest.koin.appModules
+import com.exail.archtest.koin.networkModule
+import com.exail.archtest.koin.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import timber.log.Timber
@@ -19,7 +21,7 @@ class ArchTestApplication : Application() {
 
         startKoin {
             androidContext(this@ArchTestApplication)
-            modules(appModules)
+            modules(appModules, networkModule, viewModelModule)
         }
         Timber.plant(if (BuildConfig.DEBUG) DebugTree() else ProductionTree())
     }
