@@ -6,6 +6,9 @@ import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.Observer
 import androidx.navigation.NavDirections
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
@@ -13,6 +16,7 @@ import com.squareup.picasso.Picasso
 import timber.log.Timber
 import java.lang.Exception
 
+//region NAVIGATION
 fun View.navigateTo(@IdRes destination: Int, bundle: Bundle? = null) {
     try {
         Navigation.findNavController(this).navigate(destination, bundle)
@@ -61,8 +65,10 @@ fun AppCompatActivity.navigateTo(@IdRes host: Int, @IdRes destination: Int) {
         Timber.e(ex, "Unable to navigate from this activity")
     }
 }
+//endregion
 
-fun AppCompatImageView.clearImage(){
+//region IMAGE VIEW
+fun AppCompatImageView.clearImage() {
     try {
         Picasso.get().cancelRequest(this)
     } catch (ex: Exception) {
@@ -71,3 +77,26 @@ fun AppCompatImageView.clearImage(){
         this.setImageDrawable(null)
     }
 }
+//endregion
+
+//region LIVE DATA
+fun <T> LiveData<T>.getDistinct(): LiveData<T> {
+    val distinctLiveData = MediatorLiveData<T>()
+    distinctLiveData.addSource(this, object : Observer<T> {
+        private var initialized = false
+        private var lastObj: T? = null
+        override fun onChanged(obj: T?) {
+            if (!initialized) {
+                initialized = true
+                lastObj = obj
+                distinctLiveData.postValue(lastObj)
+            } else if ((obj == null && lastObj != null)
+                || obj != lastObj) {
+                lastObj = obj
+                distinctLiveData.postValue(lastObj)
+            }
+        }
+    })
+    return distinctLiveData
+}
+//endregion
