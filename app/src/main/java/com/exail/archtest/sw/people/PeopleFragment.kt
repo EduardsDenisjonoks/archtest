@@ -43,9 +43,14 @@ class PeopleFragment : BaseFragment() {
         initDataBinding(binding)
         initPeopleListView(binding.peopleListView)
         initLoaderView(binding.swipeToRefresh)
-        initViewModel()
 
         return binding.root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        initLiveDataObservers()
     }
 
     private fun initDataBinding(binding: FragmentPeopleBinding){
@@ -65,7 +70,7 @@ class PeopleFragment : BaseFragment() {
         }
     }
 
-    private fun initViewModel() {
+    private fun initLiveDataObservers() {
         peopleViewModel.peopleList.observe(viewLifecycleOwner, Observer { peopleList ->
             peopleAdapter.submitList(peopleList)
         })

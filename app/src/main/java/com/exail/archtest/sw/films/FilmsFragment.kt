@@ -42,9 +42,14 @@ class FilmsFragment : BaseFragment() {
         initDataBinding(binding)
         initFilmListView(binding.filmListView)
         initLoaderView(binding.swipeToRefresh)
-        initViewModel()
 
         return binding.root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        initLiveDataObservers()
     }
 
     private fun initDataBinding(binding: FragmentFilmsBinding) {
@@ -64,7 +69,7 @@ class FilmsFragment : BaseFragment() {
         }
     }
 
-    private fun initViewModel() {
+    private fun initLiveDataObservers() {
         filmsViewModel.filmList.observe(viewLifecycleOwner, Observer { filmList ->
             filmsAdapter.submitList(filmList)
         })
