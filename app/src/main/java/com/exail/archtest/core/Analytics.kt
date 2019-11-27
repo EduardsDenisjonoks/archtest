@@ -5,23 +5,29 @@ import com.google.firebase.analytics.FirebaseAnalytics
 
 class Analytics(private val analyticsInstance: FirebaseAnalytics) {
 
+    /**
+     * Apply required string length limitation for FirebaseAnalytics parameters
+     */
+    private fun String.limit(charLimit: Int = 99) =
+        if (this.length > charLimit) this.substring(0..charLimit) else this
+
     private fun logEvent(event: String = AnalyticsEvents.EVENT, bundle: Bundle? = null) {
-        analyticsInstance.logEvent(event, bundle)
+        analyticsInstance.logEvent(event.limit(), bundle)
     }
 
-    fun eventOpenCatScreen(){
+    fun eventOpenCatScreen() {
         logEvent(event = AnalyticsEvents.CAT)
     }
 
-    fun eventOpenCatPaginatedScreen(){
+    fun eventOpenCatPaginatedScreen() {
         logEvent(event = AnalyticsEvents.CAT_PAGINATED)
     }
 
-    fun eventOpenChuckNorrisScreen(){
+    fun eventOpenChuckNorrisScreen() {
         logEvent(event = AnalyticsEvents.CHUCK_NORRIS)
     }
 
-    fun eventOpenStarWardScreen(){
+    fun eventOpenStarWardScreen() {
         logEvent(event = AnalyticsEvents.SW)
     }
 }
