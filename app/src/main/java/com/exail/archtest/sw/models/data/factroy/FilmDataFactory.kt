@@ -5,6 +5,7 @@ import androidx.paging.DataSource
 import com.exail.archtest.sw.models.Film
 import com.exail.archtest.sw.models.data.source.FilmDataSource
 import com.exail.archtest.sw.repository.StarWarsRepository
+import java.util.*
 
 class FilmDataFactory(
     private val starWarsRepository: StarWarsRepository,
@@ -19,12 +20,13 @@ class FilmDataFactory(
         return filmDataSource
     }
 
-    fun setSearchQuery(query: String?){
+    fun setSearchQuery(query: String?) {
+        if (Objects.equals(searchQuery, query)) return
         searchQuery = query
         refresh()
     }
 
-    fun refresh(){
+    fun refresh() {
         filmLiveData.value?.invalidate()
     }
 
