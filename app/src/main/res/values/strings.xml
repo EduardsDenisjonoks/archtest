@@ -26,6 +26,11 @@
     <string name="sw_director">Director:</string>
     <string name="sw_producer">Producer(s):</string>
     <string name="sw_episode">Episode</string>
+    <string name="sw_homeworld">Homeworld</string>
+    <string name="sw_mass">Mass</string>
+    <string name="sw_height">Height</string>
+    <string name="sw_dob">Birth Year</string>
+    <string name="sw_name">Name</string>
 
     <string name="bottom_one">1</string>
     <string name="bottom_two">2</string>

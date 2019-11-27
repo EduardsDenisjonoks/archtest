@@ -22,6 +22,6 @@ val viewModelModule = module {
     viewModel { PeopleViewModel(starWarsRepository = get()) }
     viewModel { FilmsViewModel(starWarsRepository = get()) }
     viewModel { (film : Film?) -> FilmViewModel(film) }
-    viewModel { (person: People?) -> PersonViewModel(person) }
+    viewModel { (person: People?) -> PersonViewModel(person = person, startWarsRepository = get()) }
 
 }
