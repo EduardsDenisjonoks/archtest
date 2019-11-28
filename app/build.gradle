@@ -6,8 +6,13 @@ apply plugin: 'io.fabric'
 apply plugin: 'com.google.firebase.firebase-perf'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
 
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
 android {
     compileSdkVersion 29
+
     defaultConfig {
         applicationId "com.exail.archtest"
         minSdkVersion 21
@@ -17,15 +22,27 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
+
+    signingConfigs {
+        release {
+            storeFile file(keystoreProperties['storeFile'])
+            keyAlias = keystoreProperties['keyAlias']
+            keyPassword keystoreProperties["keyPassword"]
+            storePassword keystoreProperties['storePassword']
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
         debug {
             debuggable true
         }
     }
+
     dataBinding {
         enabled = true
     }
@@ -52,9 +69,9 @@ dependencies {
     /*IMAGES*/
     implementation 'com.squareup.picasso:picasso:2.71828'
     /*RETROFIT*/
-    implementation 'com.squareup.retrofit2:retrofit:2.6.1'
-    implementation 'com.squareup.retrofit2:converter-gson:2.6.1'
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.6.2'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.2'
     /*KOIN*/
     implementation 'org.koin:koin-android-viewmodel:2.0.0-GA4'
     /*COROUTINES*/
