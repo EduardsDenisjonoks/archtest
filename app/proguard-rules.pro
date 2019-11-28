@@ -24,3 +24,6 @@
     public static *** v(...);
     public static *** e(...);
 }
+
+-keepnames class com.exail.archtest.sw.models.Film
+-keepnames class com.exail.archtest.sw.models.People
