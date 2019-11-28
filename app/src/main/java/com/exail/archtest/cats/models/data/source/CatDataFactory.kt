@@ -19,4 +19,7 @@ class CatDataFactory(private val catRepository: CatRepository) : DataSource.Fact
         return catDataSource
     }
 
+    fun refresh(){
+        catLiveData.value?.invalidate()
+    }
 }

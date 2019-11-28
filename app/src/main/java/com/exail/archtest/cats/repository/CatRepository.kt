@@ -20,10 +20,14 @@ class CatRepositoryImpl(private val catApi: CatApi) : CatRepository {
     override suspend fun getCatList(): ApiResult<List<Cat>> {
         return withContext(Dispatchers.IO) {
             try {
-                val result = catApi.getCats(limit = 30).await()
-                ApiResult.Success(result)
+                val response = catApi.getCats(limit = 30)
+                if (response.isSuccessful){
+                    ApiResult.success(response.body() ?: emptyList())
+                } else {
+                    ApiResult.error(response)
+                }
             } catch (ex: Exception) {
-                ApiResult.Error(ex)
+                ApiResult.error(ex)
             }
         }
     }

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="labelRes"
+            type="Integer" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/medium_16"
+        android:layout_marginEnd="@dimen/medium_16"
+        android:layout_marginBottom="@dimen/medium_16"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/rounded_shape"
+        android:backgroundTint="@color/sw_item_bg"
+        android:backgroundTintMode="multiply">
+        
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/medium_16"
+            android:textColor="@color/text_white"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_14"
+            app:resource="@{labelRes}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="@tools:sample/lorem"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    
+</layout>

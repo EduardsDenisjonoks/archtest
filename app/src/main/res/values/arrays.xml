@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="sample_array">
+        <item>Apple</item>
+        <item>Dog</item>
+        <item>Cat</item>
+        <item>Mice</item>
+        <item>Orange</item>
+        <item>Banana</item>
+        <item>Hamster</item>
+    </array>
+</resources>

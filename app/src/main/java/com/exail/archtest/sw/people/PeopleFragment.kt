@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
 import com.exail.archtest.R
+import com.exail.archtest.core.base.BaseFragment
 import com.exail.archtest.databinding.FragmentPeopleBinding
 import com.exail.archtest.sw.adapters.PeopleAdapter
 import com.exail.archtest.sw.view.model.PeopleViewModel
@@ -22,7 +23,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
  * A simple [Fragment] subclass.
  *
  */
-class PeopleFragment : Fragment() {
+class PeopleFragment : BaseFragment() {
 
     private val peopleViewModel: PeopleViewModel by viewModel()
     private lateinit var loaderView: SwipeRefreshLayout
@@ -39,11 +40,22 @@ class PeopleFragment : Fragment() {
             false
         )
 
+        initDataBinding(binding)
         initPeopleListView(binding.peopleListView)
         initLoaderView(binding.swipeToRefresh)
-        initViewModel()
 
         return binding.root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        initLiveDataObservers()
+    }
+
+    private fun initDataBinding(binding: FragmentPeopleBinding){
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.peopleVm = peopleViewModel
     }
 
     private fun initPeopleListView(list: RecyclerView) {
@@ -54,13 +66,26 @@ class PeopleFragment : Fragment() {
     private fun initLoaderView(loaderView: SwipeRefreshLayout) {
         this.loaderView = loaderView
         this.loaderView.setOnRefreshListener {
-
+            peopleViewModel.refreshData()
         }
     }
 
-    private fun initViewModel() {
+    private fun initLiveDataObservers() {
         peopleViewModel.peopleList.observe(viewLifecycleOwner, Observer { peopleList ->
             peopleAdapter.submitList(peopleList)
+        })
+
+        peopleViewModel.showLoading.observe(
+            viewLifecycleOwner,
+            Observer { isLoading -> loaderView.isRefreshing = isLoading })
+
+
+        peopleViewModel.search.observe(viewLifecycleOwner, Observer { searchQuery ->
+            run {
+                if (searchQuery.isNullOrBlank() || searchQuery.length >= 2) {
+                    peopleViewModel.setSearchQuery(searchQuery)
+                }
+            }
         })
     }
 }

@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.StringRes
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.exail.archtest.R
+import com.exail.archtest.core.navigateTo
 import com.exail.archtest.databinding.SwItemLabelBinding
 
 /**
@@ -43,9 +43,10 @@ class StarWarAdapter : RecyclerView.Adapter<StarWarAdapter.SwItem>() {
     class SwItem(val binding: SwItemLabelBinding) : RecyclerView.ViewHolder(binding.root) {
 
         init {
-            binding.root.setOnClickListener { v ->
+            binding.root.setOnClickListener { view ->
                 when (adapterPosition) {
-                    1 -> Navigation.findNavController(v).navigate(R.id.peoplesFragment)
+                    0 -> view.navigateTo(R.id.action_starWarsFragment_to_filmsFragment)
+                    1 -> view.navigateTo(R.id.action_starWarsFragment_to_peoplesFragment)
                 }
 
             }

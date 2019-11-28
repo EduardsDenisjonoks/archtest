@@ -1,5 +1,6 @@
 package com.exail.archtest.chuck.norris.repository
 
+import com.exail.archtest.R
 import com.exail.archtest.chuck.norris.models.Joke
 import com.exail.archtest.core.network.ApiResult
 import kotlinx.coroutines.Dispatchers
@@ -17,15 +18,17 @@ class ChuckNorrisRepositoryImpl(private val chuckNorrisApi: ChuckNorrisApi) : Ch
     override suspend fun getRandomJoke(): ApiResult<Joke> {
         return withContext(Dispatchers.IO) {
             try {
-                val result = chuckNorrisApi.getRandomJoke().await()
-                val joke = result.joke
-                if (joke == null){
-                    ApiResult.Error(Throwable("Joke data is missing"))
+                val response = chuckNorrisApi.getRandomJoke()
+                if (response.isSuccessful){
+                    when(val joke = response.body()?.joke){
+                        null -> ApiResult.error(R.string.error_no_joke)
+                        else -> ApiResult.success(joke)
+                    }
                 } else {
-                    ApiResult.Success(joke)
+                    ApiResult.error(response)
                 }
             } catch (ex: Exception) {
-                ApiResult.Error(ex)
+                ApiResult.error(ex)
             }
         }
     }

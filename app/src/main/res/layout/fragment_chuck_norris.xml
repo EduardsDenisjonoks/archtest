@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".chuck.norris.ChuckNorrisFragment">
+
+    <data>
+        <variable
+            name="chuckNorrisVm"
+            type="com.exail.archtest.chuck.norris.view.model.ChuckNorrisViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image_view"
+            android:layout_width="@dimen/big_image"
+            android:layout_height="@dimen/big_image"
+            android:layout_margin="@dimen/medium_16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/chuck_norris" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="@dimen/progress_bar_small"
+            android:layout_height="@dimen/progress_bar_small"
+            android:layout_margin="@dimen/medium_16"
+            app:is_gone="@{!chuckNorrisVm.showLoading}"
+            app:layout_constraintEnd_toEndOf="@+id/joke_view"
+            app:layout_constraintStart_toStartOf="@+id/joke_view"
+            app:layout_constraintTop_toTopOf="@+id/joke_view" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/joke_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/medium_16"
+            android:textAlignment="center"
+            android:textColor="@color/text_black"
+            android:textSize="14sp"
+            android:text="@{chuckNorrisVm.jokeText}"
+            app:is_gone="@{chuckNorrisVm.showLoading}"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintBottom_toTopOf="@+id/btn_next_joke"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_view"
+            tools:text="@tools:sample/lorem/random"
+            tools:visibility="visible"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_next_joke"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="@string/btn_next_joke"
+            android:textColor="@color/text_white"
+            app:backgroundTint="@color/colorPrimaryDark"
+            app:cornerRadius="@dimen/small_corner_2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:rippleColor="@color/colorSecondary" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

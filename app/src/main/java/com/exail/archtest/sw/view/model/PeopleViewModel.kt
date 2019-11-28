@@ -2,8 +2,8 @@ package com.exail.archtest.sw.view.model
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import androidx.paging.DataSource
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.exail.archtest.sw.models.People
@@ -17,28 +17,29 @@ import java.util.concurrent.Executors
 class PeopleViewModel(val starWarsRepository: StarWarsRepository) : ViewModel() {
 
     private val executor = Executors.newFixedThreadPool(5)
-    private lateinit var factory : DataSource.Factory<Int, People>
+    private var factory = PeopleDataFactory(starWarsRepository, null)
 
     val search = MutableLiveData<String>()
+    val showLoading: LiveData<Boolean>
     val peopleList: LiveData<PagedList<People>>
 
 
     init {
+        showLoading = Transformations.switchMap(factory.peopleLiveData) { peopleDataSource ->  peopleDataSource.initialLoading }
+
         val config = PagedList.Config.Builder()
             .setEnablePlaceholders(false)
             .setPageSize(10)
             .build()
-        peopleList = initPagedListBuilder(search.value, config).build()
+        peopleList = (LivePagedListBuilder(factory, config)).setFetchExecutor(executor).build()
     }
 
-    private fun initPagedListBuilder(string: String?, config:  PagedList.Config):  LivePagedListBuilder<Int,People>{
-        factory = PeopleDataFactory(starWarsRepository, string)
-        return LivePagedListBuilder<Int, People>(factory, config)
+    fun setSearchQuery(searchQuery: String?){
+        factory.setSearchQuery(searchQuery)
     }
-
 
     fun refreshData(){
-
+        factory.refresh()
     }
 
     override fun onCleared() {

@@ -1,7 +1,7 @@
 package com.exail.archtest.chuck.norris.repository
 
 import com.exail.archtest.chuck.norris.models.JokeResponse
-import kotlinx.coroutines.Deferred
+import retrofit2.Response
 import retrofit2.http.GET
 
 /**
@@ -10,5 +10,5 @@ import retrofit2.http.GET
 interface ChuckNorrisApi {
 
     @GET("jokes/random")
-    fun getRandomJoke(): Deferred<JokeResponse>
+    suspend fun getRandomJoke(): Response<JokeResponse>
 }

@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.exail.archtest.R
 import com.exail.archtest.chuck.norris.view.model.ChuckNorrisViewModel
+import com.exail.archtest.core.base.BaseFragment
 import com.exail.archtest.databinding.FragmentChuckNorrisBinding
 import com.google.android.material.button.MaterialButton
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -19,7 +20,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
  * A simple [Fragment] subclass.
  *
  */
-class ChuckNorrisFragment : Fragment() {
+class ChuckNorrisFragment :  BaseFragment() {
 
     private val chuckNorrisViewModel: ChuckNorrisViewModel by viewModel()
 
@@ -37,6 +38,7 @@ class ChuckNorrisFragment : Fragment() {
         setViewModelToBinding(binding)
         initViewModel()
         initNextJokeButton(binding.btnNextJoke)
+        analytics.eventOpenChuckNorrisScreen()
 
         return binding.root
     }

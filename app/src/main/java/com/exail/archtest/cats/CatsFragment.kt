@@ -16,16 +16,20 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.exail.archtest.R
 import com.exail.archtest.cats.adapters.CatAdapter
 import com.exail.archtest.cats.view.models.CatViewModel
+import com.exail.archtest.core.Analytics
+import com.exail.archtest.core.base.BaseFragment
 import com.exail.archtest.databinding.FragmentCatsBinding
+import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
 /**
  * A simple [Fragment] subclass.
  *
  */
-class CatsFragment : Fragment() {
+class CatsFragment : BaseFragment() {
 
     private val catViewModel: CatViewModel by viewModel()
+
     private lateinit var catAdapter: CatAdapter
     private lateinit var loaderView: SwipeRefreshLayout
 
@@ -43,6 +47,7 @@ class CatsFragment : Fragment() {
         initCatListView(binding.catListView)
         initLoaderView(binding.srlCatList)
         initViewModel()
+        analytics.eventOpenCatScreen()
 
         return binding.root
     }
