@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.databinding.DataBindingUtil
 import com.exail.archtest.bottom.BottomNavActivity
 import com.exail.archtest.core.navigateTo
@@ -36,6 +37,7 @@ class MainFragment : Fragment() {
         initTestGroundButton(binding.btnTestGround)
         initStarWarsButton(binding.btnStarWars)
         initBottomNavButton(binding.btnBottomNav)
+        initVersionLabel(binding.versionLabel)
 
         return binding.root
     }
@@ -62,6 +64,10 @@ class MainFragment : Fragment() {
 
     private fun initBottomNavButton(button: MaterialButton){
         button.setOnClickListener { context?.startActivity(Intent(context, BottomNavActivity::class.java)) }
+    }
+
+    private fun initVersionLabel(textView: AppCompatTextView){
+        textView.text = BuildConfig.VERSION_NAME
     }
 
 }

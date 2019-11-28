@@ -16,6 +16,12 @@ static def generateVersionCode() {
     return result.toInteger()
 }
 
+static def generateVersionName(){
+    def result = "git describe --tag --abbrev=0".execute().text.trim()
+    if (result.empty) return "1.0.0"
+    return result
+}
+
 android {
     compileSdkVersion 29
 
@@ -24,7 +30,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 29
         versionCode generateVersionCode()
-        versionName "1.0"
+        versionName generateVersionName()
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
