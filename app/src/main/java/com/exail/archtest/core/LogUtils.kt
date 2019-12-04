@@ -7,7 +7,7 @@ class LogUtils {
 
     companion object {
         /**
-         * If it is debug build will log tag and message, if exception is provided will log exception
+         * Will log debug and if exception is provided will log exception
          * @param tag - tag as sting to indicate what called this function
          * @param message - message as string
          * @param ex - optional (nullable) exception
