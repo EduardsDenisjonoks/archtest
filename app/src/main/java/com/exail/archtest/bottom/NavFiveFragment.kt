@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 
 import com.exail.archtest.R
+import com.exail.archtest.core.base.BaseFragment
 import com.exail.archtest.core.navigatePopUp
 import com.exail.archtest.core.navigateTo
 import com.exail.archtest.databinding.FragmentNavFiveBinding
@@ -17,7 +18,7 @@ import com.google.android.material.button.MaterialButton
 /**
  * A simple [Fragment] subclass.
  */
-class NavFiveFragment : Fragment() {
+class NavFiveFragment : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,6 +28,7 @@ class NavFiveFragment : Fragment() {
 
         setUpPopUpButton(binding.btnBackUp)
         setUpNavToThreeButton(binding.btnBackToThree)
+        analytics.eventViewBottomNavFragment(5)
 
         return binding.root
     }

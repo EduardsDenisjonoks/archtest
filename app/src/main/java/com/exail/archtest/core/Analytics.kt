@@ -30,6 +30,12 @@ class Analytics(private val analyticsInstance: FirebaseAnalytics) {
     fun eventOpenStarWardScreen() {
         logEvent(event = AnalyticsEvents.SW)
     }
+
+    fun eventViewBottomNavFragment(index: Int) {
+        val bundle = Bundle()
+        bundle.putInt(AnalyticsParams.FRAGMENT_INDEX, index)
+        logEvent(AnalyticsEvents.BOTTOM_NAV, bundle)
+    }
 }
 
 sealed class AnalyticsEvents {
@@ -40,5 +46,13 @@ sealed class AnalyticsEvents {
         const val CAT_PAGINATED = "CAT_PAGINATED"
         const val CHUCK_NORRIS = "CHUCK_NORRIS"
         const val SW = "STAR_WARS"
+        const val BOTTOM_NAV = "BOTTOM_NAV"
+    }
+}
+
+sealed class AnalyticsParams {
+
+    companion object {
+        const val FRAGMENT_INDEX = "FRAGMENT_INDEX"
     }
 }

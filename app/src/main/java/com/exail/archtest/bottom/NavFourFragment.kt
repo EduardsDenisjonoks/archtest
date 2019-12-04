@@ -26,6 +26,7 @@ class NavFourFragment : BaseFragment() {
         val binding = DataBindingUtil.inflate<FragmentNavFourBinding>(inflater, R.layout.fragment_nav_four, container, false)
 
         initNavToFiveButton(binding.btnNavToFive)
+        analytics.eventViewBottomNavFragment(4)
 
         return binding.root
     }

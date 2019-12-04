@@ -8,12 +8,12 @@ import com.exail.archtest.core.error.*
 sealed class ApiResult<out T> {
 
     data class Success<out T>(val data: T) : ApiResult<T>()
-    data class Empty(val value: String = "no response") : ApiResult<Nothing>()
+    object Empty : ApiResult<Nothing>()
     data class Error(val appError: AppError) : ApiResult<Nothing>()
 
     companion object {
         fun <T> success(data: T): ApiResult<T> = Success(data)
-        fun empty() = Empty()
+        fun empty() = Empty
         fun error(
             errorBody: Any,
             vararg errorResolvers: AppErrorResolver = arrayOf(NetworkErrorResolver())

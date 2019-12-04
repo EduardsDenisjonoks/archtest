@@ -19,7 +19,7 @@ class NavOneFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        analytics.eventViewBottomNavFragment(1)
         return inflater.inflate(R.layout.fragment_nav_one, container, false)
     }
 
