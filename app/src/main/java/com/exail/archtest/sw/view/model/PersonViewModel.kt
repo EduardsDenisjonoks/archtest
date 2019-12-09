@@ -1,5 +1,6 @@
 package com.exail.archtest.sw.view.model
 
+import androidx.core.app.Person
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -21,6 +22,8 @@ class PersonViewModel(private val person: People?, val startWarsRepository: Star
         personImage = MutableLiveData<Int>().apply { value = getPersonImage(person) }
         getHomeworldFromApi()
     }
+
+    fun getPerson() = person
 
     fun getName(): String? = person?.name
 
