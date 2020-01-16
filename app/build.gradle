@@ -12,7 +12,7 @@ static def generateVersionCode() {
     return result.toInteger()
 }
 
-static def generateVersionName(){
+static def generateVersionName() {
     def result = "git describe --tag --abbrev=0".execute().text.trim()
     if (result.empty) return "1.0.0"
     return result
@@ -79,6 +79,8 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta4'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'com.google.android.material:material:1.0.0'
+    /*VIEW PAGER 2*/
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
     /*IMAGES*/
     implementation 'com.squareup.picasso:picasso:2.71828'
     /*RETROFIT*/

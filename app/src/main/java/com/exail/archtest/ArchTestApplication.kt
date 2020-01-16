@@ -21,7 +21,7 @@ class ArchTestApplication : Application() {
 
         startKoin {
             androidContext(this@ArchTestApplication)
-            modules(appModules, networkModule, viewModelModule)
+            modules(listOf(appModules, networkModule, viewModelModule))
         }
         Timber.plant(if (BuildConfig.DEBUG) DebugTree() else ProductionTree())
     }
