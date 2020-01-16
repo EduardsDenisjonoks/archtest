@@ -29,7 +29,7 @@ class NavTwoFragment : BaseFragment() {
         analytics.eventViewBottomNavFragment(2)
         binding.pager.adapter = pageAdapter
         binding.pager.setPageTransformer(ZoomOutPageTransformer())
-        
+
         return binding.root
     }
 

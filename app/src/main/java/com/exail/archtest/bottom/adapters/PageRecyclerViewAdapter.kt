@@ -30,7 +30,7 @@ class PageRecyclerViewAdapter : RecyclerView.Adapter<PageRecyclerViewAdapter.Ima
         RecyclerView.ViewHolder(binding.root) {
 
         fun bindView() {
-            binding.image = "https://picsum.photos/30${adapterPosition}"
+            binding.image = "https://picsum.photos/300?random=${adapterPosition}"
         }
     }
 }
