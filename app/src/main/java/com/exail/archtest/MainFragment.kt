@@ -37,6 +37,7 @@ class MainFragment : Fragment() {
         initTestGroundButton(binding.btnTestGround)
         initStarWarsButton(binding.btnStarWars)
         initBottomNavButton(binding.btnBottomNav)
+        initNotificationsButton(binding.btnNotifications)
         initVersionLabel(binding.versionLabel)
 
         return binding.root
@@ -64,6 +65,10 @@ class MainFragment : Fragment() {
 
     private fun initBottomNavButton(button: MaterialButton){
         button.setOnClickListener { context?.startActivity(Intent(context, BottomNavActivity::class.java)) }
+    }
+
+    private fun initNotificationsButton(button: MaterialButton){
+        button.setOnClickListener { it.navigateTo(R.id.action_main_to_notification) }
     }
 
     private fun initVersionLabel(textView: AppCompatTextView){

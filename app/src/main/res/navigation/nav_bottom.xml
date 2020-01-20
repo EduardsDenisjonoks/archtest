@@ -57,5 +57,8 @@
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@+id/navigation_three"
             app:popUpToInclusive="true" />
+        <deepLink
+            android:id="@+id/dl_nav_five"
+            app:uri="dl_nav_five"/>
     </fragment>
 </navigation>

@@ -3,6 +3,7 @@ package com.exail.archtest.koin
 import com.exail.archtest.cats.view.models.CatPaginatedViewModel
 import com.exail.archtest.cats.view.models.CatViewModel
 import com.exail.archtest.chuck.norris.view.model.ChuckNorrisViewModel
+import com.exail.archtest.notifictions.view.model.NotificationViewModel
 import com.exail.archtest.sw.models.Film
 import com.exail.archtest.sw.models.People
 import com.exail.archtest.sw.view.model.FilmViewModel
@@ -23,5 +24,6 @@ val viewModelModule = module {
     viewModel { FilmsViewModel(starWarsRepository = get()) }
     viewModel { (film : Film?) -> FilmViewModel(film) }
     viewModel { (person: People?) -> PersonViewModel(person = person, startWarsRepository = get()) }
+    viewModel { NotificationViewModel() }
 
 }

@@ -1,5 +1,6 @@
 package com.exail.archtest.core
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.IdRes
@@ -76,6 +77,19 @@ fun AppCompatImageView.clearImage() {
     } finally {
         this.setImageDrawable(null)
     }
+}
+//endregion
+
+//region RESOURCES
+fun Int?.getResString(context: Context): String? {
+    if (this == null) return null
+    try {
+        context.getString(this)
+    } catch (ex: Exception) {
+        Timber.e(ex, "Unable to get string from resource")
+
+    }
+    return null
 }
 //endregion
 

@@ -10,11 +10,15 @@
     <string name="btn_minus">Minus</string>
     <string name="btn_star_wars">Star Wars</string>
     <string name="btn_bottom_nav">Bottom Navigation</string>
+    <string name="btn_notifications">Notifications</string>
     <string name="btn_nav_to_four">Navigate to four</string>
     <string name="btn_nav_to_five">Navigate to five</string>
     <string name="btn_pop_up">Pop Up</string>
     <string name="btn_back_to_three">Back to three</string>
+    <string name="btn_show_notification">Show notification</string>
 
+    <string name="hint_title">Title</string>
+    <string name="hint_content">Content</string>
     <string name="hint_search">Search…</string>
 
     <string name="sw_films">Films</string>
@@ -51,5 +55,6 @@
     <string name="error_test">Test error</string>
     <string name="error_no_joke">Unable to retrieve joke</string>
     <string name="error_invalid_host">Unable to connect host</string>
+
 
 </resources>
