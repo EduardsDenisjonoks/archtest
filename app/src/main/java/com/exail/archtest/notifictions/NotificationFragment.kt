@@ -29,6 +29,7 @@ class NotificationFragment : Fragment() {
 
         initDataBinding(binding)
         initShowNotificationButton(binding.btnShowNotification)
+        initShowDeepLinkgNotificationButton(binding.btnShowDeepLinkNotification)
 
         return binding.root
     }
@@ -44,6 +45,12 @@ class NotificationFragment : Fragment() {
             val content = notificationViewModel.getNotificationContent()
 
             NotificationUtils.showContentNotification(btn.context, title, content)
+        }
+    }
+
+    private fun initShowDeepLinkgNotificationButton(button: MaterialButton){
+        button.setOnClickListener { btn ->
+            NotificationUtils.showDeepLinkNotification(btn.context)
         }
     }
 }

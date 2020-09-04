@@ -4,12 +4,20 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
+import android.os.Bundle
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.navigation.NavController
+import androidx.navigation.NavDeepLinkBuilder
+import androidx.navigation.Navigation
+import com.exail.archtest.MainActivity
 import com.exail.archtest.R
+import com.exail.archtest.bottom.BottomNavActivity
 import com.exail.archtest.core.getResString
+import com.exail.archtest.sw.models.People
+import com.exail.archtest.sw.people.PeopleFragmentDirections
 import timber.log.Timber
 import java.lang.Exception
 import java.util.*
@@ -17,13 +25,44 @@ import java.util.*
 class NotificationUtils {
 
     companion object {
+        private const val CONTENT_LIMIT: Int = 50
         private const val CONTENT_NOTIFICATION_ID: Int = 1000
+        private const val DEEP_LINK_NOTIFICATION_ID: Int = 1001
 
         fun showContentNotification(context: Context, title: String, content: String) {
             val builder =
                 createNotification(context = context, icon = null, title = title, content = content)
             with(NotificationManagerCompat.from(context)) {
                 notify(CONTENT_NOTIFICATION_ID, builder.build())
+            }
+        }
+
+        fun showDeepLinkNotification(context: Context) {
+            val builder =
+                createNotification(
+                    context = context,
+                    icon = null,
+                    title = "Deep link notification",
+                    content = "This notification will take you into test bottom navigation: fragment five"
+                )
+
+            val pendingIntent = NavDeepLinkBuilder(context)
+                .setComponentName(BottomNavActivity::class.java)
+                .setGraph(R.navigation.nav_bottom)
+                .setDestination(R.id.navigation_five)
+                .createPendingIntent()
+/*
+            val pendingIntent = NavDeepLinkBuilder(context)
+                .setGraph(R.navigation.nav_main)
+                .setDestination(R.id.personFragment)
+                .setArguments(PeopleFragmentDirections.actionPeoplesFragmentToPersonFragment(People(1, "Ed", "Male", "1992", "Blue", "Brown", "White", "181 cm", "120kg", 1, emptyList(),
+                    emptyList(), emptyList())).arguments)
+                .createPendingIntent()*/
+
+            builder.setContentIntent(pendingIntent)
+
+            with(NotificationManagerCompat.from(context)) {
+                notify(DEEP_LINK_NOTIFICATION_ID, builder.build())
             }
         }
 
@@ -82,8 +121,16 @@ class NotificationUtils {
             content: String? = null
         ): NotificationCompat.Builder {
             this.setSmallIcon(icon ?: R.mipmap.ic_launcher)
-            title?.let { this.setContentTitle(title) }
-            content?.let { this.setContentText(content) }
+            title?.let { this.setContentTitle(it) }
+            content?.let {
+                this.setContentText(it)
+                if (it.length >= CONTENT_LIMIT) {
+                    this.setStyle(NotificationCompat.BigTextStyle().bigText(it))
+                } else {
+                    this.setContentText(it)
+                }
+
+            }
             return this
         }
 

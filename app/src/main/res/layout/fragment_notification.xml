@@ -30,6 +30,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/medium_16"
+            android:maxLines="6"
             android:hint="@string/hint_content"
             android:text="@={notificationVm.oNotificationContent}"
             app:layout_constraintTop_toBottomOf="@+id/notification_title_view"
@@ -43,6 +44,16 @@
             android:text="@string/btn_show_notification"
             style="@style/DefaultButton"
             app:layout_constraintTop_toBottomOf="@+id/notification_content_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_show_deep_link_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_show__deep_link_notification"
+            style="@style/DefaultButton"
+            app:layout_constraintTop_toBottomOf="@+id/btn_show_notification"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
